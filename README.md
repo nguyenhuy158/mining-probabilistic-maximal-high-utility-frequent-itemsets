@@ -1,1 +1,1 @@
-# Approximation_of_Probabilistic_Maximal_Frequent_Itemset_Mining_Over_Uncertain_Sensed_Data
+# Approximation of Probabilistic Maximal Frequent Itemset Mining Over Uncertain Sensed Data
