@@ -2,9 +2,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class UncertainDatabase {
-    List<Transaction> transactions;
+    List<Trans> transactions;
 
-    public UncertainDatabase(List<Transaction> transactions) {
+    public UncertainDatabase(List<Trans> transactions) {
         this.transactions = transactions;
     }
 
@@ -57,11 +57,11 @@ public class UncertainDatabase {
     }
 
     public static void main(String[] args) {
-        List<Transaction> transactions = new ArrayList<>();
-        transactions.add(new Transaction("T1",
+        List<Trans> transactions = new ArrayList<>();
+        transactions.add(new Trans("T1",
                 Arrays.asList(new Attribute("A", 0.7), new Attribute("B", 0.6), new Attribute("C", 0.3))));
-        transactions.add(new Transaction("T2", Arrays.asList(new Attribute("B", 0.8), new Attribute("C", 0.6))));
-        transactions.add(new Transaction("T3", Arrays.asList(new Attribute("A", 0.3), new Attribute("B", 0.8))));
+        transactions.add(new Trans("T2", Arrays.asList(new Attribute("B", 0.8), new Attribute("C", 0.6))));
+        transactions.add(new Trans("T3", Arrays.asList(new Attribute("A", 0.3), new Attribute("B", 0.8))));
 
         UncertainDatabase db = new UncertainDatabase(transactions);
         double supportThresholdT1 = 0.5;
