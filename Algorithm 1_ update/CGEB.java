@@ -43,8 +43,6 @@ public class CGEB {
                     }
                     temp++;
                 }
-                if (count != 0)
-                    prob = prob / count;
                 // If meet requirements, add this set to result (minsup and lb(E(f)))
                 if (count >= minsup && prob >= E) {
                     // Adding to L for preparing the next set generation
@@ -84,7 +82,7 @@ public class CGEB {
 
     public static void main(String[] args) {
         // Read data
-        UD UD = new UD("data1.txt");
+        UD UD = new UD("data.txt");
 
         System.out.println(UD.removeProbFromUD());
         List<Set<String>> res = CGEBFucntion(UD, 1, 0.5);
