@@ -1,0 +1,13 @@
+{ABCDEFG=0.5, ABC=0.105, ADE=0.18000000000000002, AC=0.42, AEF=0.3, BCD=0.6, ABD=0.4, ADF=0.45, ACE=0.252, CDE=0.6, ABCDEF=0.0525, ACDEF=0.45, ABCDE=0.21, ABCD=0.04409999999999999, ACDE=0.3, ACEF=0.4, AGD=0.33}
+Lowerbound: 0.5604628493881512
+Upperbound: 1.9408170345270905
+Start CGEBFucntion
+[[ABCDE, ABC, ABCD, ABCDEF], [ABCDE, ABCD, ABCDEF], [ABC, ABCD, ABCDEF], [ADE, ABD], [ACDEF, ADE, ADF], [ADE, ACDE, ACEF, AGD], [AC, ACE, ABCD], [ABCDEFG, ABCDEF], [ABC, AEF, ACDE], [BCD, ACE, CDE]]
+Start APFI_MAX
+End APFI_MAX
+APFI_MAX Results:
+Set: [ACDE], Exception: 0.6, Variance: 0.42, Threshold: 2, Probability: 0.3
+Set: [CDE], Exception: 0.6, Variance: 0.24, Threshold: 1, Probability: 0.6
+Set: [BCD], Exception: 0.6, Variance: 0.24, Threshold: 1, Probability: 0.6
+Code run time: 9ms
+Memory used: 0 kb

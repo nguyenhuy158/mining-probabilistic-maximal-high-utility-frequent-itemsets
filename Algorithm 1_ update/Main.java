@@ -145,7 +145,7 @@ public class Main {
 
     public static void main(String[] args) {
         // Read data
-        UD UD = new UD("data.txt");
+        UD UD = new UD("data1.txt");
 
         // Call CGEBFucntion and store the result
         List<C> cgebResults = CGEBFucntion(UD, 2, 0.6);
