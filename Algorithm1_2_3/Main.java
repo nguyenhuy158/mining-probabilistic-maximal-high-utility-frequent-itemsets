@@ -163,9 +163,10 @@ public class Main {
 
     public static void main(String[] args) {
         try {
+            String fileNameInput = "data.txt";
 
             // Set the file output name with the current date and time
-            String fileName = "output_" + formattedDate + ".txt";
+            String fileName = "output_" + fileNameInput.replace(".txt", "") + "_" + formattedDate + ".txt";
 
             // Redirect the output to the file with the current date and time
             PrintStream fileOut = new PrintStream(new FileOutputStream(fileName));
@@ -175,7 +176,7 @@ public class Main {
             long startMemory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 
             // Read data
-            UD UD = new UD("T10I4D100K.txt");
+            UD UD = new UD(fileNameInput);
 
             System.out.println(UD.getProbability());
             // Call CGEBFucntion and store the result
