@@ -163,7 +163,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            String fileNameInput = "data.txt";
+            String fileNameInput = "T10I4D100K.txt";
 
             // Set the file output name with the current date and time
             String fileName = "output_" + fileNameInput.replace(".txt", "") + "_" + formattedDate + ".txt";
@@ -180,7 +180,7 @@ public class Main {
 
             System.out.println(UD.getProbability());
             // Call CGEBFucntion and store the result
-            List<C> apfiMaxResults = APFI_MAX(UD, 1, 0.3);
+            List<C> apfiMaxResults = APFI_MAX(UD, 10000, 0.3);
             System.out.println("APFI_MAX Results:");
             for (C result : apfiMaxResults) {
                 System.out.println(result);
