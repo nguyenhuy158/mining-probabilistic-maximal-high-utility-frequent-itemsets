@@ -15,7 +15,7 @@ import java.util.Iterator;
 
 public class Main {
     static Date currentDate = new Date();
-    static SimpleDateFormat dateFormat = new SimpleDateFormat("YYYYMMDD.HHmmss");
+    static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd.HH:mm:ss");
     static String formattedDate = dateFormat.format(currentDate);
 
     // CGEB algorithms
@@ -161,9 +161,11 @@ public class Main {
         try {
             // Set the file input name
             String fileNameInput = "T10I4D100K.txt";
+            int minsup = 6000;
+            double minpro = 0.6;
 
             // Set the file output name with the current date and time
-            String fileName = "output_" + fileNameInput.replace(".txt", "") + "_" + formattedDate + ".txt";
+            String fileName = "result_" + fileNameInput.replace(".txt", "") + "_" + formattedDate + ".txt";
 
             // Redirect the output to the file with the current date and time
             PrintStream fileOut = new PrintStream(new FileOutputStream(fileName));
@@ -177,9 +179,14 @@ public class Main {
 
             System.out.println(UD.getProbability());
             // Call CGEBFucntion and store the result
-            MutableList<C> apfiMaxResults = APFI_MAX(UD, 10000, 0.3);
+            MutableList<C> apfiMaxResults = APFI_MAX(UD, minsup, minpro);
             System.out.println("APFI_MAX Results:");
             apfiMaxResults.each(result -> System.out.println(result));
+
+            System.out.println("number of transaction: " + UD.getSize());
+            System.out.println("minsup: " + minsup);
+            System.out.println("minpro: " + minpro);
+
 
             long end = System.currentTimeMillis();
             long duration = end - start;

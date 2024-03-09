@@ -127,6 +127,10 @@ public class UD {
         return this.UD;
     }
 
+    public int getSize() {
+        return this.UD.size();
+    }
+
     @Override
     public String toString() {
         this.UD.each(t -> System.out.println(t.toString()));

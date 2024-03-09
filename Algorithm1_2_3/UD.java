@@ -111,6 +111,10 @@ public class UD {
         return this.UD;
     }
 
+    public int getSize() {
+        return this.UD.size();
+    }
+
     public String toString() {
         for (Item t : UD) {
             System.out.println(t.toString());
