@@ -10,11 +10,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-//This class is used for storing an uncerntain database
+/**
+ * Used for storing an uncerntain database
+ */
 public class UD {
     private List<Item> UD = new ArrayList<>();
     private Map<String, Double> uniqueProbability = new HashMap<>();
 
+    /**
+     * Constructs with full parameters.
+     *
+     * @param path   path to UD file.
+     */
     public UD(String path) {
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             String line;
@@ -74,11 +81,20 @@ public class UD {
         }
     }
 
+    /**
+     * generates a random double value
+     * @return the range of values returned is [0.0, 1.0).
+     */
     private double probRandom() {
         Random random = new Random();
         return Double.parseDouble(String.format("%.2f", random.nextDouble()));
     }
 
+    /**
+     *
+     * @param s
+     * @return
+     */
     private boolean isProbability(String s) {
         try {
             double prob = Double.parseDouble(s);
@@ -92,7 +108,10 @@ public class UD {
         }
     }
 
-    // Seperate the prob from the UD
+    /**
+     * Seperate the prob from the UD
+     * @return
+     */
     public List<Set<String>> removeProbFromUD() {
         List<Set<String>> res = new ArrayList<>();
 
@@ -103,18 +122,34 @@ public class UD {
         return res;
     }
 
+    /**
+     *
+     * @return
+     */
     public Map<String, Double> getProbability() {
         return this.uniqueProbability;
     }
 
+    // Getter and Setter
     public List<Item> getUD() {
         return this.UD;
     }
 
+    public void setUD(List<Item> UD) {
+        this.UD = UD;
+    }
+
+
+    /**
+     * Get size of UD
+     * @return size of UD
+     */
     public int getSize() {
         return this.UD.size();
     }
 
+    // Override toString()
+    @Override
     public String toString() {
         for (Item t : UD) {
             System.out.println(t.toString());
