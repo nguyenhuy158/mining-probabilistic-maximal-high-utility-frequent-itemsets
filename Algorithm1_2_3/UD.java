@@ -122,15 +122,16 @@ public class UD {
         return res;
     }
 
-    /**
-     *
-     * @return
-     */
+
+    // Getter and Setter
     public Map<String, Double> getProbability() {
         return this.uniqueProbability;
     }
 
-    // Getter and Setter
+    public void setUniqueProbability(Map<String, Double> uniqueProbability) {
+        this.uniqueProbability = uniqueProbability;
+    }
+
     public List<Item> getUD() {
         return this.UD;
     }
@@ -138,7 +139,6 @@ public class UD {
     public void setUD(List<Item> UD) {
         this.UD = UD;
     }
-
 
     /**
      * Get size of UD
