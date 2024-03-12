@@ -1,1 +1,1 @@
-# Approximation of Probabilistic Maximal Frequent Itemset Mining Over Uncertain Sensed Data
+# Mining probabilistic maximal high-utility frequent itemsets
