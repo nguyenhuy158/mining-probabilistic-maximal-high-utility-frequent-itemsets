@@ -221,3 +221,4 @@ nbdist/
 **/output*.txt
 **/.idea/**
 **.iml
+Report_template.pdf
