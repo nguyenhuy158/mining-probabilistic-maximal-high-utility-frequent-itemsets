@@ -1,0 +1,19 @@
+{D=0.21, A=0.35, B=0.21, C=0.3}
+Lowerbound: 0.5604628493881512
+Upperbound: 1.9408170345270905
+Start CGEBTopKFunction
+[[D, A, B, C], [D, B, C], [D, A, B]]
+End CGEBTopKFunction
+End CGEBTopKFunction
+Start APFI_MAX_TopK
+End APFI_MAX_TopK
+APFI_MAX_TopK Results:
+Set: [C], Exception: 0.6, Variance: 0.42, Threshold: 2, Probability: 0.3
+Set: [D], Exception: 0.63, Variance: 0.5, Threshold: 3, Probability: 0.21
+Set: [B], Exception: 0.63, Variance: 0.5, Threshold: 3, Probability: 0.21
+Set: [A], Exception: 0.7, Variance: 0.45, Threshold: 2, Probability: 0.35
+number of transaction: 3
+minsup: 1
+minpro: 0.3
+Code run time: 357ms
+Memory used: 11000 kb

@@ -406,8 +406,13 @@ public class Main {
 
             printOutput(fileName, minSup, minPro, topK);
 
+            // Read data
+            UD UD = new UD(fileName);
+
             // Set the file output name with the current date and time
-            fileName = "result_%s_%s.txt".formatted(fileName.replace(".txt", ""), formattedDate);
+            fileName = "result_%s_%s.txt".formatted(
+                    fileName.substring(fileName.lastIndexOf("/") + 1).replace(".txt", ""),
+                    formattedDate);
 
             // Redirect the output to the file with the current date and time
             PrintStream fileOut = new PrintStream(new FileOutputStream(fileName));
@@ -415,9 +420,6 @@ public class Main {
 
             long start = System.currentTimeMillis();
             long startMemory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-
-            // Read data
-            UD UD = new UD(fileName);
 
             System.out.println(UD.getProbability());
             // Call CGEBTopKFunction and store the result
