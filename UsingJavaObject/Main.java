@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
+import java.lang.management.MemoryMXBean;
+import java.lang.management.ManagementFactory;
 
 public class Main {
     static Date currentDate = new Date();
@@ -26,7 +28,10 @@ public class Main {
 
         // Separate the probability out of UD
         List<Set<String>> D = UD.removeProbFromUD();
-        System.out.println(D);
+        int _count = 0;
+        for (Set<String> set : D) {
+            System.out.println(++_count + "\t" + set);
+        }
 
         // Get unique data
         for (Set<String> transaction : D) {
@@ -291,8 +296,13 @@ public class Main {
 
             printOutput(fileName, minSup, minPro, topK);
 
+            // Read data
+            UD UD = new UD(fileName);
+
             // Set the file output name with the current date and time
-            fileName = "result_%s_%s.txt".formatted(fileName.replace(".txt", ""), formattedDate);
+            fileName = "result_%s_%s.txt".formatted(
+                    fileName.substring(fileName.lastIndexOf("/") + 1).replace(".txt", ""),
+                    formattedDate);
 
             // Redirect the output to the file with the current date and time
             PrintStream fileOut = new PrintStream(new FileOutputStream(fileName));
@@ -300,11 +310,16 @@ public class Main {
 
             long start = System.currentTimeMillis();
             long startMemory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+            // Get the memory MXBean
+            MemoryMXBean memoryMXBean = ManagementFactory.getMemoryMXBean();
+            // Get the heap memory usage before running the code
+            long startHeapMemoryUsage = memoryMXBean.getHeapMemoryUsage().getUsed();
 
-            // Read data
-            UD UD = new UD(fileName);
+            // System.out.println(UD.getProbability());
+            for (Map.Entry<String, Double> entry : UD.getProbability().entrySet()) {
+                System.out.println(entry.getKey() + " : " + entry.getValue());
+            }
 
-            System.out.println(UD.getProbability());
             // Call CGEBFucntion and store the result
             List<C> apfiMaxResults = APFI_MAX_TopK(UD, minSup, minPro, topK);
             System.out.println("APFI_MAX_TopK Results:");
@@ -314,6 +329,7 @@ public class Main {
             System.out.printf("number of transaction: %d%n", UD.getSize());
             System.out.printf("minSup: %d%n", minSup);
             System.out.printf("minPro: %s%n", minPro);
+            System.out.printf("topK: %s%n", topK);
 
             long end = System.currentTimeMillis();
             long duration = end - start;
@@ -321,6 +337,12 @@ public class Main {
             long memoryUsed = endMemory - startMemory;
             System.out.printf("Code run time: %dms%n", duration);
             System.out.printf("Memory used: %d kb%n", Math.round(memoryUsed / 1000.0));
+
+            long endHeapMemoryUsage = memoryMXBean.getHeapMemoryUsage().getUsed();
+            // Calculate the memory used
+            long memoryUsed1 = endHeapMemoryUsage - startHeapMemoryUsage;
+            // Print the memory used
+            System.out.println("Memory used: " + memoryUsed1 / 1000.0);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
